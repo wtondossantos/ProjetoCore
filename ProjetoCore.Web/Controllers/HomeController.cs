@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoCore.Web.Models;
 
@@ -12,6 +12,7 @@ namespace ProjetoCore.Web.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
 
