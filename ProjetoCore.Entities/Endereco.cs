@@ -10,7 +10,7 @@ namespace ProjetoCore.Entities
         public int Id { get; set; }
         [Required]
         [MaxLength(150)]
-        public string Rua { get; set; }
+        public string Logradouro { get; set; }
         [ForeignKey("Cidade")]
         public int CidadeId{get; set;}
         public Cidade Cidade{get; set;}

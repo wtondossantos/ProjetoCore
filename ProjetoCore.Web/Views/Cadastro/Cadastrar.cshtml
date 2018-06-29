@@ -1,0 +1,25 @@
+﻿
+<h2>Cadastrar</h2>
+
+<form asp-controller="Cadastro" asp-action="Cadastrar" metrod="post">
+    @Html.Label("Nome")
+    @Html.TextBox("Nome")
+    @Html.Label("Email")
+    @Html.TextBox("Email")
+    @Html.Label("Senha")
+    @Html.Password("Senha")
+    @Html.Label("Masculino")
+    @Html.RadioButton("Sexo", "Masculino")
+    @Html.Label("Feminino")
+    @Html.RadioButton("Sexo", "Feminino")
+    @Html.Label("Lembrar")
+    @Html.CheckBox("Lembrar")
+    @Html.Label("Paises")
+    @Html.DropDownList("Pais", listaPaises)
+
+    <button type="submit">Salvar</button>
+</form>
+@if (ViewBag.Erro != null)
+{
+    <h2>@ViewBag.Erro</h2>
+}

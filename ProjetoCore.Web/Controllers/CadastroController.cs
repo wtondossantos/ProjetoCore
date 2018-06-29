@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjetoCore.Entities;
 using ProjetoCore.Repositories;
 using ProjetoCore.Repositories.Interfaces;
-using.ProjetoCore.Web.ViewModels;
+using ProjetoCore.Web.ViewModels;
 
 namespace ProjetoCore.Web.Controllers
 {
@@ -15,30 +15,27 @@ namespace ProjetoCore.Web.Controllers
     {
         public IActionResult Index()
         {
-            var pais = new List<Pais>{
-                new Pais{
-                    Id = 1,
-                    Nome = "Brasil",
-                    Codigo = 55}
+            var pais = new Pais{
+                Id = 1,
+                Nome = "Brasil",
+                Codigo = "55"
             };
-            var estado = new List<Estado>{
-                new Estado{
-                    Id = 1,
-                    Nome = "São Paulo",
-                    Sigla = "SP",
-                    Codigo = 21,
-                    Pais = pais}
+            var estado = new Estado{
+                Id = 1,
+                Nome = "São Paulo",
+                Sigla = "SP",
+                Codigo = "21",
+                Pais = pais
             };
-            var cidade = new List<Cidade>{
-                new Cidade{
-                    Id = 1,
-                    Nome = "São Paulo",
-                    Codigo = 20,
-                    Estado = estado}
+            var cidade = new Cidade{
+                Id = 1,
+                Nome = "São Paulo",
+                Codigo = "20",
+                Estado = estado
             };
             var endereco = new Endereco{
                 Id = 1,
-                Rua = "Rua Itararé",
+                Logradouro = "Rua Itararé",
                 Cidade = cidade
             };
             
@@ -47,6 +44,24 @@ namespace ProjetoCore.Web.Controllers
             };
 
             return View(endereco);//_endereco.Pesquisar());
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Cadastrar(CadastroViewModel cadastro)
+        {
+            
+            if (String.IsNullOrEmpty(cadastro.Endereco.Logradouro))
+            {
+                ViewBag.Erro = "Dados de cadastro inválidos...";
+                return View();
+            }
+            
+            var endereco = cadastro.Endereco;
+
+            //await _endereco.Adicionar(endereco);
+
+            return View("Index", cadastro);
         }
     }
 }

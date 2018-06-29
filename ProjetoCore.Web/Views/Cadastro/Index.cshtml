@@ -1,2 +1,12 @@
 @model Endereco
 
+<h2>Endereço</h2>
+
+<ul>
+    <li>@Model.Cidade.Estado.Pais.Nome</li>
+    <li>@Model.Cidade.Estado.Nome</li>
+    <li>@Model.Cidade.Nome</li>
+    <li>@Model.Logradouro</li>
+</ul>
+
+@Html.ActionLink("Cadastrar", "Cadastrar", "Cadastro")
